@@ -25,13 +25,15 @@ st.set_page_config(
 
 # ── Palette — Security Dashboard ─────────────────────────────────────────────
 C = {
-    "bg":        "#0F1117",   # deep charcoal — main background
-    "surface":   "#1A1D27",   # slightly lighter — cards
-    "sidebar":   "#141720",   # sidebar
-    "border":    "#2A2D3A",   # subtle borders
-    "text":      "#E8EAF0",   # primary text
-    "muted":     "#7B7F8E",   # secondary text
+    "bg":        "#0D1117",   # deep navy-black — main background
+    "surface":   "#161C2D",   # navy-tinted cards
+    "sidebar":   "#111827",   # dark navy sidebar
+    "border":    "#1E2D45",   # navy border
+    "text":      "#CBD5E1",   # slate-white primary text
+    "muted":     "#64748B",   # slate secondary text
     "accent":    "#3B82F6",   # blue accent
+    "navy":      "#1E3A5F",   # deep navy highlight
+    "slate":     "#334155",   # slate surface variant
     "red":       "#EF4444",   # high risk
     "amber":     "#F59E0B",   # medium risk
     "green":     "#22C55E",   # safe / low risk
@@ -51,11 +53,11 @@ st.markdown(f"""
 
   section[data-testid="stSidebar"] {{
     background-color: {C['sidebar']} !important;
-    border-right: 1px solid {C['border']};
+    border-right: 1px solid {C['navy']};
   }}
   section[data-testid="stSidebar"] * {{ color: {C['text']} !important; }}
   section[data-testid="stSidebar"] .stButton > button {{
-    background-color: {C['surface']} !important;
+    background-color: {C['navy']} !important;
     color: {C['text']} !important;
     border: 1px solid {C['border']} !important;
     border-radius: 6px !important;
@@ -63,6 +65,7 @@ st.markdown(f"""
     font-weight: 500 !important;
   }}
   section[data-testid="stSidebar"] .stButton > button:hover {{
+    background-color: {C['slate']} !important;
     border-color: {C['accent']} !important;
     color: {C['text']} !important;
   }}
@@ -72,6 +75,7 @@ st.markdown(f"""
     border: 1px solid {C['border']};
     border-radius: 8px;
     padding: 20px 24px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.3);
   }}
   .metric-label {{
     font-size: 0.68rem;
@@ -124,11 +128,14 @@ st.markdown(f"""
   .mono {{ font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }}
 
   .stTabs [data-baseweb="tab-list"] {{
-    background: {C['surface']};
+    background: {C['navy']};
     border-radius: 8px;
     padding: 3px;
     gap: 2px;
     border: 1px solid {C['border']};
+  }}
+  .stTabs [aria-selected="true"] + * {{
+    color: {C['text']} !important;
   }}
   .stTabs [data-baseweb="tab"] {{
     border-radius: 6px;
@@ -143,7 +150,7 @@ st.markdown(f"""
     background: transparent !important;
   }}
   .stTabs [aria-selected="true"] {{
-    background: {C['bg']} !important;
+    background: {C['slate']} !important;
     color: {C['text']} !important;
     box-shadow: none;
   }}
